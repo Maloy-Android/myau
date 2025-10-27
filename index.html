@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Васюшки хыхыххых ♥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            background-color: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #ff4d6d;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .heart {
+            color: #ff4d6d;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart-shape {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            transform: rotate(45deg);
+            animation: float 15s infinite linear;
+        }
+
+        .heart-shape:before,
+        .heart-shape:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .heart-shape:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart-shape:after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .button {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #ff3357;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.6);
+        }
+
+        .quote {
+            font-style: italic;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .creator {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .creator-title {
+            font-size: 1.5rem;
+            color: #ff4d6d;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff4d6d;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .creator-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 25px;
+            }
+            
+            .creator-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <div class="container">
+        <h1>Для Васюшки <span class="heart">♥</span></h1>
+        
+        <div class="message">
+            Давай там не грусти а то приду к тебе с бинзопилой :)
+        </div>
+        
+        <div class="quote">
+            "Ты заслуживаешь всего самого прекрасного в этом мире, и сегодняшний день не исключение!"
+        </div>
+        
+        <div class="message">
+            Помни, что ты - удивительный человек, и мир становится лучше, когда ты в нем улыбаешься!
+        </div>
+        
+        <button class="button" id="complimentBtn">Тут я мяукаю</button>
+        <button class="button" id="hugBtn">Виртуальное объятие</button>
+        
+        <div class="creator">
+            <div class="creator-title">Сделано котёнком</div>
+            <div class="creator-info">
+                <img src="https://avatars.githubusercontent.com/u/177887593?s=400&u=483e28303eebc46b618a7e9c289a008d5c0583c0&v=4" alt="Аватарка создателя" class="avatar" id="creatorAvatar">
+                <div class="creator-name" id="creatorName">@MaloyBegonia</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Мур ♥
+        </div>
+    </div>
+
+    <script>
+        function createHearts() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heartCount = 30;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart-shape';
+                
+                const size = Math.random() * 15 + 10;
+                heart.style.width = `${size}px`;
+                heart.style.height = `${size}px`;
+                
+                heart.style.left = `${Math.random() * 100}vw`;
+                
+                heart.style.animationDelay = `${Math.random() * 15}s`;
+                
+                heart.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                
+                const colors = ['#ff4d6d', '#ff8fa3', '#ffb3c1', '#ffccd5'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.backgroundColor = randomColor;
+                heart.style.before = randomColor;
+                heart.style.after = randomColor;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        const myau = [
+            "Мяу🤗 "
+        ];
+        
+        function showCompliment() {
+            const randomIndex = Math.floor(Math.random() * myau.length);
+            alert(myau[randomIndex]);
+        }
+        
+        function sendHug() {
+            alert("🤗 Крепкое-крепкое объятие для тебя🤗");
+            
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createSpecialHeart();
+                }, i * 200);
+            }
+        }
+        
+        function createSpecialHeart() {
+            const heartsContainer = document.getElementById('heartsContainer');
+            const heart = document.createElement('div');
+            heart.className = 'heart-shape';
+            
+            heart.style.width = '25px';
+            heart.style.height = '25px';
+            heart.style.left = `${Math.random() * 100}vw`;
+            heart.style.animationDuration = '8s';
+            heart.style.backgroundColor = '#ff4d6d';
+            
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+            document.getElementById('complimentBtn').addEventListener('click', showCompliment);
+            document.getElementById('hugBtn').addEventListener('click', sendHug);
+        });
+    </script>
+</body>
+</html>
